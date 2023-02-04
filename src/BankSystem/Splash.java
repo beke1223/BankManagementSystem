@@ -13,24 +13,16 @@ public class Splash extends JWindow {
     private Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
     public Splash() {
-
+//        String uname = "Admin";
+//        String pwd = "1234";
+        AdminLogin al = new AdminLogin();
         try {
             JFrame frame = new JFrame();
             JPanel panel = new JPanel();
-            JPanel panel1 = new JPanel();
+
             JLabel lbImage = new JLabel(new ImageIcon("C:\\Users\\bekal\\Desktop\\FP\\expense_tracker_app\\images\\R.jpg"));
             Color cl = new Color(0, 0, 0);
             lbImage.setBorder(new LineBorder(cl, 1));
-
-            JLabel label = new JLabel("Admin Login");
-            JTextArea uname = new JTextArea();
-            JTextArea pwd = new JTextArea();
-            JButton login = new JButton("Login");
-
-            panel1.add(label);
-            panel1.add(uname);
-            panel1.add(pwd);
-            panel1.add(login);
 
             panel.add(lbImage, BorderLayout.CENTER);
 
@@ -43,7 +35,15 @@ public class Splash extends JWindow {
             Thread.sleep(2000);
             frame.setVisible(false);
 
-            new BankSystem().setVisible(true);
+            al.setVisible(true);
+
+//            if (al.getUserName() == null && al.getUserName().equals(uname)) {
+//                System.out.println(al.getUserName() + "" + al.getPassword());
+//                al.setVisible(false);
+//                new BankSystem().setVisible(true);
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Please Enter Correct Information", "Login Error", JOptionPane.ERROR);
+//            }
         } catch (InterruptedException ex) {
             Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);
         }
