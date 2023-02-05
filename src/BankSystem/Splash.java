@@ -15,7 +15,7 @@ public class Splash extends JWindow {
     public Splash() {
 //        String uname = "Admin";
 //        String pwd = "1234";
-        AdminLogin al = new AdminLogin();
+        Login al = new Login();
         try {
             JFrame frame = new JFrame();
             JPanel panel = new JPanel();
@@ -28,8 +28,8 @@ public class Splash extends JWindow {
 
             frame.add(panel);
 
-            frame.setSize(new BankSystem().getWidth(), new BankSystem().getHeight());
-            frame.setLocation(new BankSystem().getX(), new BankSystem().getY());
+            frame.setSize(new BankSystemAd().getWidth(), new BankSystemAd().getHeight());
+            frame.setLocation(new BankSystemAd().getX(), new BankSystemAd().getY());
             frame.setTitle("Mankira Bank");
             frame.setVisible(true);
             Thread.sleep(2000);
@@ -40,7 +40,7 @@ public class Splash extends JWindow {
 //            if (al.getUserName() == null && al.getUserName().equals(uname)) {
 //                System.out.println(al.getUserName() + "" + al.getPassword());
 //                al.setVisible(false);
-//                new BankSystem().setVisible(true);
+//                new BankSystemAd().setVisible(true);
 //            } else {
 //                JOptionPane.showMessageDialog(null, "Please Enter Correct Information", "Login Error", JOptionPane.ERROR);
 //            }

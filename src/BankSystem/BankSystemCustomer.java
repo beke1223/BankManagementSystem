@@ -11,7 +11,7 @@ import java.awt.PrintJob.*;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.metal.*;
 
-public class BankSystem extends JFrame implements ActionListener, ItemListener {
+public class BankSystemCustomer extends JFrame implements ActionListener, ItemListener {
 
     //Main Place on Form where All Child Forms will Shown.
     private JDesktopPane desktop = new JDesktopPane();
@@ -22,7 +22,7 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
     //All the Main Menu of the Program.
     private JMenu mnuFile, mnuEdit, mnuView, mnuOpt, mnuWin, mnuHelp;
 
-    private JMenuItem addNew, printRec, end;				//File Menu Options.
+    private JMenuItem  printRec, end;				//File Menu Options.
     private JMenuItem deposit, withdraw, delRec, search, searchName;	//Edit Menu Options.
     private JMenuItem oneByOne, allCustomer;				//View Menu Options.
     private JMenuItem change, style, theme;					//Option Menu Options.
@@ -33,13 +33,13 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
     private JPopupMenu popMenu = new JPopupMenu();
 
     //MenuItems for PopupMenu of the Program.
-    private JMenuItem open, report, dep, with, del, find, all;
+    private JMenuItem   report, dep, with , find, all;
 
     //For Program's ToolBar.
     private JToolBar toolBar;
 
     //For ToolBar's Button.
-    private JButton btnNew, btnDep, btnWith, btnRec, btnDel, btnSrch, btnHelp, btnKey;
+    private JButton   btnDep, btnWith, btnRec , btnSrch, btnHelp, btnKey;
 
     //Main Form StatusBar where Program's Name & Welcome Message Display.
     private JPanel statusBar = new JPanel();
@@ -59,8 +59,8 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
     private SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
     private String d = sdf.format(currDate);
 
-    //Following all Variables are use in BankSystem's IO's.
-    //Variable use in Reading the BankSystem Records File & Store it in an Array.
+    //Following all Variables are use in BankSystemAd's IO's.
+    //Variable use in Reading the BankSystemAd Records File & Store it in an Array.
     private int count = 0;
     private int rows = 0;
     private int total = 0;
@@ -68,12 +68,12 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
     //String Type Array use to Load Records From File.
     private String records[][] = new String[500][6];
 
-    //Variable for Reading the BankSystem Records File.
+    //Variable for Reading the BankSystemAd Records File.
     private FileInputStream fis;
     private DataInputStream dis;
 
     //Constructor of The Bank Program to Iniatilize all Variables of Program.
-    public BankSystem() {
+    public BankSystemCustomer() {
 
         //Setting Program's Title.
         super("Mankira Bank [Pvt] Limited.");
@@ -116,10 +116,10 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 
         //Creating the MenuItems of Program.
         //MenuItems for FileMenu.
-        addNew = new JMenuItem("Open New Account", new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Open.gif"));
-        addNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, Event.CTRL_MASK));
-        addNew.setMnemonic((int) 'N');
-        addNew.addActionListener(this);
+//        addNew = new JMenuItem("Open New Account", new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Open.gif"));
+//        addNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, Event.CTRL_MASK));
+//        addNew.setMnemonic((int) 'N');
+//        addNew.addActionListener(this);
         printRec = new JMenuItem("Print Customer Balance", new ImageIcon("Images/New.gif"));
         printRec.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, Event.CTRL_MASK));
         printRec.setMnemonic((int) 'R');
@@ -205,7 +205,7 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 
         //Adding MenuItems to Menu.
         //File Menu Items.
-        mnuFile.add(addNew);
+//        mnuFile.add(addNew);
         mnuFile.addSeparator();
         mnuFile.add(printRec);
         mnuFile.addSeparator();
@@ -215,15 +215,15 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
         mnuEdit.add(deposit);
         mnuEdit.add(withdraw);
         mnuEdit.addSeparator();
-        mnuEdit.add(delRec);
+//        mnuEdit.add(delRec);
         mnuEdit.addSeparator();
         mnuEdit.add(search);
         mnuEdit.add(searchName);
 
         //View Menu Items.
         mnuView.add(oneByOne);
-        mnuView.addSeparator();
-        mnuView.add(allCustomer);
+//        mnuView.addSeparator();
+//        mnuView.add(allCustomer);
 
         //Options Menu Items.
         mnuOpt.add(change);
@@ -252,27 +252,27 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
         bar.add(mnuHelp);
 
         //MenuItems for PopupMenu.
-        open = new JMenuItem("Open New Account", new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Open.gif"));
-        open.addActionListener(this);
+//        open = new JMenuItem("Open New Account", new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Open.gif"));
+//        open.addActionListener(this);
         report = new JMenuItem("Print BankSystem Report", new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/New.gif"));
         report.addActionListener(this);
         dep = new JMenuItem("Deposit Money");
         dep.addActionListener(this);
         with = new JMenuItem("Withdraw Money");
         with.addActionListener(this);
-        del = new JMenuItem("Delete Customer", new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Delete.gif"));
-        del.addActionListener(this);
+//        del = new JMenuItem("Delete Customer", new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Delete.gif"));
+//        del.addActionListener(this);
         find = new JMenuItem("Search Customer", new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/find.gif"));
         find.addActionListener(this);
         all = new JMenuItem("View All Customer", new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/refresh.gif"));
         all.addActionListener(this);
 
         //Adding Menues to PopupMenu.
-        popMenu.add(open);
+//        popMenu.add(open);
         popMenu.add(report);
         popMenu.add(dep);
         popMenu.add(with);
-        popMenu.add(del);
+//        popMenu.add(del);
         popMenu.add(find);
         popMenu.add(all);
 
@@ -295,9 +295,9 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
         );
 
         //Creating the ToolBar's Buttons of Program.
-        btnNew = new JButton(new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images//NotePad.gif"));
-        btnNew.setToolTipText("Create New Account");
-        btnNew.addActionListener(this);
+//        btnNew = new JButton(new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images//NotePad.gif"));
+//        btnNew.setToolTipText("Create New Account");
+//        btnNew.addActionListener(this);
         btnDep = new JButton(new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/ImationDisk.gif"));
         btnDep.setToolTipText("Deposit Money");
         btnDep.addActionListener(this);
@@ -307,9 +307,9 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
         btnRec = new JButton(new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Paproll.gif"));
         btnRec.setToolTipText("Print Customer Balance");
         btnRec.addActionListener(this);
-        btnDel = new JButton(new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Toaster.gif"));
-        btnDel.setToolTipText("Delete Customer");
-        btnDel.addActionListener(this);
+//        btnDel = new JButton(new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Toaster.gif"));
+//        btnDel.setToolTipText("Delete Customer");
+//        btnDel.addActionListener(this);
         btnSrch = new JButton(new ImageIcon("C:\\Users\\bekal\\Downloads\\Compressed\\BankManagementSystem\\src\\Images/Search.gif"));
         btnSrch.setToolTipText("Search Customer");
         btnSrch.addActionListener(this);
@@ -322,14 +322,14 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 
         //Creating the ToolBar of Program.
         toolBar = new JToolBar();
-        toolBar.add(btnNew);
+//        toolBar.add(btnNew);
         toolBar.addSeparator();
         toolBar.add(btnDep);
         toolBar.add(btnWith);
         toolBar.addSeparator();
         toolBar.add(btnRec);
         toolBar.addSeparator();
-        toolBar.add(btnDel);
+//        toolBar.add(btnDel);
         toolBar.addSeparator();
         toolBar.add(btnSrch);
         toolBar.addSeparator();
@@ -364,16 +364,17 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 
         Object obj = ae.getSource();
 
-        if (obj == addNew || obj == open || obj == btnNew) {
-
-            boolean b = openChildWindow("Create New Account");
-            if (b == false) {
-                NewAccount newAcc = new NewAccount();
-                desktop.add(newAcc);
-                newAcc.show();
-            }
-
-        } else if (obj == printRec || obj == btnRec || obj == report) {
+//        if (obj == addNew || obj == open || obj == btnNew) {
+//
+//            boolean b = openChildWindow("Create New Account");
+//            if (b == false) {
+//                NewAccount newAcc = new NewAccount();
+//                desktop.add(newAcc);
+//                newAcc.show();
+//            }
+//
+//        } 
+ if (obj == printRec || obj == btnRec || obj == report) {
 
             getAccountNo();
 
@@ -399,16 +400,17 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
                 withMon.show();
             }
 
-        } else if (obj == delRec || obj == del || obj == btnDel) {
+        } 
+//        else if (obj == delRec || obj == del || obj == btnDel) {
+//
+//            boolean b = openChildWindow("Delete Account Holder");
+//            if (b == false) {
+//                DeleteCustomer delCus = new DeleteCustomer();
+//                desktop.add(delCus);
+//                delCus.show();
+//            }
 
-            boolean b = openChildWindow("Delete Account Holder");
-            if (b == false) {
-                DeleteCustomer delCus = new DeleteCustomer();
-                desktop.add(delCus);
-                delCus.show();
-            }
-
-        } else if (obj == search || obj == find || obj == btnSrch) {
+         else if (obj == search || obj == find || obj == btnSrch) {
 
             boolean b = openChildWindow("Search Customer [By No.]");
             if (b == false) {
@@ -558,7 +560,7 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 
     }
 
-    //Following Functions use for Printing Records & Report of BankSystem.
+    //Following Functions use for Printing Records & Report of BankSystemAd.
     void getAccountNo() {
 
         String printing;
@@ -705,5 +707,4 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
             pJob.end();
         }
     }
-
 }
